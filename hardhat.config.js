@@ -16,7 +16,7 @@ const MAINNET_RPC_URL =
   "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const SEPOLIA_RPC_URL =
   process.env.SEPOLIA_RPC_URL ||
-  "https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY"
+  "https://sepolia.infura.io/v3/a7c05e5b6c7344f5ae245af63dd04468"
 const POLYGON_MAINNET_RPC_URL =
   process.env.POLYGON_MAINNET_RPC_URL ||
   "https://polygon-mainnet.alchemyapi.io/v2/your-api-key"
@@ -26,7 +26,7 @@ const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
 const ETHERSCAN_API_KEY =
-  process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
+  process.env.ETHERSCAN_API_KEY || "VIY4R51W1S6N2BFTUTPS4ZYBPB5HB7D5WP"
 const POLYGONSCAN_API_KEY =
   process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
 const REPORT_GAS = process.env.REPORT_GAS.toLowerCase() === "true" || false
@@ -70,23 +70,23 @@ module.exports = {
       chainId: 137,
     },
   },
-  etherscan: {
-    // npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
-    apiKey: {
-      sepolia: ETHERSCAN_API_KEY,
-      polygon: POLYGONSCAN_API_KEY,
-    },
-  },
+  // etherscan: {
+  //   // npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
+  //   apiKey: {
+  //     sepolia: ETHERSCAN_API_KEY,
+  //     polygon: POLYGONSCAN_API_KEY,
+  //   },
+  // },
   gasReporter: {
     enabled: REPORT_GAS,
     currency: "USD",
     outputFile: "gas-report.txt",
     noColors: true,
-    // coinmarketcap: process.env.COINMARKETCAP_API_KEY,
+    infura: process.env.INFURA_API_KEY,
   },
   contractSizer: {
     runOnCompile: false,
-    only: ["OurToken"],
+    only: ["SampleToken"],
   },
   namedAccounts: {
     deployer: {
